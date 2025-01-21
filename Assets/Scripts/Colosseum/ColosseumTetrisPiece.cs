@@ -122,6 +122,9 @@ public class ColosseumTetrisPiece : MonoBehaviour
             if (IsCompletelyOutside(randomPosition)) break;
         }
 
+        // multiply the new position by a fraction to bring the whole sprite inside the camera view
+        randomPosition = randomPosition * 0.9f;
+
         if (IsPlaced) puzzle.RemovePiece(this, currentPlacement);
         transform.position = randomPosition;
     }

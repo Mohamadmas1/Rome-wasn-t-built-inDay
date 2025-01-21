@@ -7,6 +7,7 @@ TagManager:
   - Ant
   - Slide Piece
   - Tetris Piece
+  - Pisa
   layers:
   - Default
   - TransparentFX

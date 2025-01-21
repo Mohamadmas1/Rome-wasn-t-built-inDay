@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.19, y: -2.71, z: -1}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -105,11 +105,13 @@ MonoBehaviour:
   speed: 1
   minDistanceToDestination: 0.1
   destination: {x: 0, y: 0, z: 0}
-  directionRandomness: 8
+  directionRandomness: 6
   changeDirectionChance: 0.05
   tetrisPieceTag: Tetris Piece
   slidePieceTag: Slide Piece
   pisaTag: Pisa
+  deathSprite: {fileID: 1829534874883999205, guid: 27536917809897040afd6a40c53cc43e, type: 3}
+  deathDuration: 3
 --- !u!114 &2920286883472848674
 MonoBehaviour:
   m_ObjectHideFlags: 0

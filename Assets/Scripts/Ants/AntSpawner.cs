@@ -10,7 +10,8 @@ public class AntSpawner : MonoBehaviour
     [SerializeField] private int antSpawnRatio = 10;
     [SerializeField] private int bulletAntSpawnRatio = 1;
     [SerializeField] private Transform[] antDestinations;
-    private float timeSinceLastSpawn = 0.0f;
+    private float timeSinceLastSpawn = 0.9f;
+    [SerializeField] private float spawnDecreaseFactorPerSec = 0.995f; // factor by which the spawn rate decreases every second
 
     private void Update()
     {
@@ -20,6 +21,9 @@ public class AntSpawner : MonoBehaviour
             timeSinceLastSpawn = 0.0f;
             SpawnAnt();
         }
+
+        // decrease spawn rate over time
+        spawnRateSeconds *= Mathf.Pow(spawnDecreaseFactorPerSec, Time.deltaTime);
     }
 
     private void SpawnAnt()

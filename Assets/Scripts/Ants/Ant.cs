@@ -20,6 +20,10 @@ public class Ant : MonoBehaviour
     [SerializeField] private string slidePieceTag = "Slide Piece";
     [SerializeField] private string pisaTag = "Pisa";
 
+    [Header("Death")]
+    [SerializeField] private GameObject deathSprite;
+    [SerializeField] private float deathDuration = 1.0f;
+
     private void Start()
     {
         currentDirection = (destination - transform.position);
@@ -69,12 +73,11 @@ public class Ant : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag(pisaTag))
         {
-            // TODO: Implement the Pisa piece collision
+            GameManager.Instance.DamagePisaTower();
         }
 
         Die();
     }
-
 
     public void EventOnPointerDown(BaseEventData data)
     {
@@ -88,5 +91,7 @@ public class Ant : MonoBehaviour
     public void Die()
     {
         Destroy(gameObject);
+        GameObject death = Instantiate(deathSprite, transform.position, transform.rotation);
+        Destroy(death, deathDuration);
     }
 }

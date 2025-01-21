@@ -7,8 +7,9 @@ public class VaticanSlidePuzzle : MonoBehaviour
     [SerializeField] private Vector2Int puzzleSize;
     [SerializeField] private List<VaticanSlidePiece> pieces;
     private Vector2Int emptyPiece;
+    public bool isSolved { get; private set; } = false;
 
-    private void Start()
+    private void Awake()
     {
         // initialize the puzzle, make the empty piece in the last position
         emptyPiece = new Vector2Int(puzzleSize.x - 1, puzzleSize.y - 1);
@@ -20,13 +21,10 @@ public class VaticanSlidePuzzle : MonoBehaviour
         }
 
         // randomize the puzzle by making a bunch of random slides
-        for (int i = 0; i < 100; i++)
-        {
-            DoRandomMove(false);
-        }
+        for (int i = 0; i < 100; i++) DoRandomMove();
     }
 
-    public bool SlidePiece(VaticanSlidePiece piece, bool checkSolved = true)
+    public bool SlidePiece(VaticanSlidePiece piece)
     {
         // check if the piece is next to the empty piece
         int distanceFromEmpty = Mathf.Abs(piece.currentPosition.x - emptyPiece.x) + Mathf.Abs(piece.currentPosition.y - emptyPiece.y);
@@ -38,27 +36,24 @@ public class VaticanSlidePuzzle : MonoBehaviour
         emptyPiece = temp;
 
         // check if the puzzle is solved
-        if (checkSolved && IsPuzzleSolved())
-        {
-            Debug.Log("Puzzle solved!");
-        }
+        isSolved = IsPuzzleSolved();
 
         return true;
     }
 
-    public void DoRandomMove(bool checkSolved = true)
+    public void DoRandomMove()
     {
         while (true)
         {
             int randomPieceIndex = Random.Range(0, pieces.Count);
-            if (SlidePiece(pieces[randomPieceIndex], checkSolved)) break;
+            if (SlidePiece(pieces[randomPieceIndex])) break;
         }
     }
 
     private void SetPiecePosition(VaticanSlidePiece piece, Vector2Int position)
     {
         piece.currentPosition = position;
-        piece.transform.localPosition = new Vector3(piece.currentPosition.x, piece.currentPosition.y, 0);
+        piece.transform.localPosition = new Vector3(piece.currentPosition.x, -piece.currentPosition.y, 0);
     }
 
     public bool IsPuzzleSolved()

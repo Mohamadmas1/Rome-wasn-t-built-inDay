@@ -7,6 +7,7 @@ public class ColosseumTetrisPuzzle : MonoBehaviour
     public Vector2Int size;
     private ColosseumTetrisPiece[,] grid;
     [SerializeField] private ColosseumTetrisPiece[] pieces;
+    public bool isSolved { get; private set; } = false;
 
     private void Awake()
     {
@@ -36,10 +37,7 @@ public class ColosseumTetrisPuzzle : MonoBehaviour
         piece.currentPlacement = position;
 
         // check if the puzzle is solved
-        if (IsSolved())
-        {
-            Debug.Log("Puzzle solved!");
-        }
+        isSolved = IsSolved();
 
         return true;
     }

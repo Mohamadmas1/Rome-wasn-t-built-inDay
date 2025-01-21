@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
         // Singleton pattern
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
+
+        Time.timeScale = 1;
     }
 
     private void Update()

@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "class2025-gamejam-ex2-team-5-main.sln"
+    "dotnet.defaultSolution": "jam-game-ex2.sln"
 }

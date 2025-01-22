@@ -63,11 +63,13 @@ public class Ant : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(tetrisPieceTag))
         {
+            // audioSource.PlayOneShot(dragSound);
             ColosseumTetrisPiece tetrisPiece = collision.transform.parent.GetComponent<ColosseumTetrisPiece>();
             tetrisPiece.ThrowRandomely();
         }
         else if (collision.gameObject.CompareTag(slidePieceTag))
         {
+            // audioSource.PlayOneShot(dragSound);
             VaticanSlidePiece slidePiece = collision.gameObject.GetComponent<VaticanSlidePiece>();
             slidePiece.puzzle.DoRandomMove();
         }
@@ -84,6 +86,7 @@ public class Ant : MonoBehaviour
         health--;
         if (health <= 0)
         {
+            AntsManager.playDeathSound();
             Die();
         }
     }

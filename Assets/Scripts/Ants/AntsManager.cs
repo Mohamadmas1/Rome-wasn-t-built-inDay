@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class AntsManager : MonoBehaviour
 {
+    private static AudioSource audioSource;
+    
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+    
     public void WaterBucketClicked()
     {
         // physics overlap circle to find ants in range with tag "Ant"
@@ -15,5 +22,10 @@ public class AntsManager : MonoBehaviour
                 collider.GetComponent<Ant>().Die();
             }
         }
+    }
+    
+    public static void playDeathSound()
+    {
+        audioSource.Play();
     }
 }

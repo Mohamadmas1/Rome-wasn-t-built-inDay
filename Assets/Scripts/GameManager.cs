@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
 
     [Header("Scene Management")]
     [SerializeField] private SceneField mainMenuScene;
+    
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip lostLifeSound;
+    [SerializeField] private AudioClip loseSound;
+    [SerializeField] private AudioClip winSound;
 
     private void Awake()
     {
@@ -31,6 +36,8 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
 
         Time.timeScale = 1;
+        
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -45,21 +52,30 @@ public class GameManager : MonoBehaviour
     public void DamagePisaTower()
     {
         Debug.Log("Pisa Tower is damaged!");
+        audioSource.PlayOneShot(lostLifeSound);
         pisaTowerHealth--;
 
         // check if the pisa tower is destroyed, otherwise update the sprite
-        if (pisaTowerHealth <= 0) FailGame();
+        if (pisaTowerHealth <= 0)
+        {
+            pisaTowerSpriteRenderer.enabled = false;
+            FailGame();
+        }
         else pisaTowerSpriteRenderer.sprite = pisaTowerSprites[pisaTowerHealth - 1];
     }
 
     public void FailGame()
     {
+        Debug.Log("Lost game");
+        audioSource.PlayOneShot(loseSound);
         Time.timeScale = 0;
         loseScreen.SetActive(true);
     }
 
     public void WinGame()
     {
+        Debug.Log("Won game");
+        audioSource.PlayOneShot(winSound);
         Time.timeScale = 0;
         winScreen.SetActive(true);
     }

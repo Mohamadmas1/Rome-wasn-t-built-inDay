@@ -112,6 +112,8 @@ MonoBehaviour:
   pisaTag: Pisa
   deathSprite: {fileID: 1829534874883999205, guid: 27536917809897040afd6a40c53cc43e, type: 3}
   deathDuration: 3
+  smashSound: {fileID: 8300000, guid: aecf5d05ed408459e8ab3e20e4d63e6f, type: 3}
+  dragSound: {fileID: 8300000, guid: 3f67b7575f0064210ae0d7173d6d90f0, type: 3}
 --- !u!114 &2920286883472848674
 MonoBehaviour:
   m_ObjectHideFlags: 0

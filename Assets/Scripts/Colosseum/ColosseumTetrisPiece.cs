@@ -11,7 +11,13 @@ public class ColosseumTetrisPiece : MonoBehaviour
     public Vector2Int currentPlacement;
     public Vector2Int[] occupiedSlots;
     private Vector3 initialPosition;
+    private AudioSource audioSource;
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+    
     public void BeginDrag(BaseEventData eventData)
     {
         initialPosition = transform.position;
@@ -30,6 +36,8 @@ public class ColosseumTetrisPiece : MonoBehaviour
 
     public void EndDrag(BaseEventData eventData)
     {
+        audioSource.Play();
+        
         // set all child colliders to non-trigger
         Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
         foreach (Collider2D collider in colliders) collider.isTrigger = false;

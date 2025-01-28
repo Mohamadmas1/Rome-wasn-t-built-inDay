@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3588083551538586117}
   - component: {fileID: 6310421567558785626}
   - component: {fileID: 2853049845502570059}
-  - component: {fileID: 2918984034562544387}
   - component: {fileID: 2612335675252666695}
   - component: {fileID: 7824348065542248414}
   - component: {fileID: 5022931985606498169}
@@ -112,37 +111,6 @@ MonoBehaviour:
   pisaTag: Pisa
   deathSprite: {fileID: 2640362852608082796, guid: 4f46128f30ae05d4891c170edcc362be, type: 3}
   deathDuration: 3
-  smashSound: {fileID: 8300000, guid: aecf5d05ed408459e8ab3e20e4d63e6f, type: 3}
-  dragSound: {fileID: 8300000, guid: 3f67b7575f0064210ae0d7173d6d90f0, type: 3}
---- !u!114 &2918984034562544387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2224797508411787530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2853049845502570059}
-          m_TargetAssemblyTypeName: Ant, Assembly-CSharp
-          m_MethodName: EventOnPointerDown
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!61 &2612335675252666695
 BoxCollider2D:
   m_ObjectHideFlags: 0

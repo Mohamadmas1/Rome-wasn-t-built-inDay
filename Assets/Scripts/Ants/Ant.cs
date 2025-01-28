@@ -81,7 +81,7 @@ public class Ant : MonoBehaviour
         Die();
     }
 
-    public void EventOnPointerDown(BaseEventData data)
+    public void Damage()
     {
         health--;
         if (health <= 0)
